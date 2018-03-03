@@ -10,7 +10,13 @@ Process :
 2.ques will be served randomly (ques will not repeat)
 3.after all questions result wll be shown to user
 
+4.To view all users result with sorting of points and time taken visit:
+http://localhost/cirestapi/quiz/getalldata
 
+
+
+To work with api api key ,username and password are required.
+Please Check quiz controller to call api request using curl.
 
 To get the all users data with quiz details
 'http://localhost/cirestapi/api/example/userdetails/'

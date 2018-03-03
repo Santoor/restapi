@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2018 at 06:28 AM
+-- Generation Time: Mar 03, 2018 at 07:44 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `mcq` (
   `opts` longtext COLLATE utf8_unicode_ci NOT NULL,
   `ans` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `mcq`
@@ -71,7 +71,9 @@ INSERT INTO `mcq` (`id`, `ques`, `opts`, `ans`) VALUES
 (5, ' Which one of the following is the right way of defining a function in PHP?', '{"a":"function { function body }","b":"data type functionName(parameters) { function body }","c":"functionName(parameters) { function body }","d":"function fumctionName(parameters) { function body }"}', 'd'),
 (6, 'A function in PHP which starts with __ (double underscore) is know as.', '{"a":"Magic Function","b":"Inbuilt Function","c":" Default Function","d":"User Defined Function"}', 'a'),
 (7, 'Which statement is used for updating existing information in the table?', '{"a":"UPDATE","b":"WHERE","c":"MODIFY","d":"ALTER"}', 'a'),
-(8, 'Which clause is used to rename the existing table?', '{"a":"RENAME","b":"MODIFY","c":"ALTER","d":"None of the mentioned"}', 'a');
+(8, 'Which clause is used to rename the existing table?', '{"a":"RENAME","b":"MODIFY","c":"ALTER","d":"None of the mentioned"}', 'a'),
+(9, 'In a LIKE clause, you can could ask for any value ending in "qpt" by writing', '{"a":"LIKE %qpt","b":"LIKE *ton","c":"LIKE ton$","d":"LIKE ^.*ton$"}', 'a'),
+(10, 'Which function used to get the current time in mysql?', '{"a":"getTime()","b":"Time()","c":"NOW()"}', 'c');
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `users`
@@ -92,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`) VALUES
 (19, 'test user', 'test1@gmail.com'),
-(20, 'santoor', 'santoor@pixopa.com');
+(21, 'weew', 'test21@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -108,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `user_score` (
   `points` int(4) NOT NULL,
   `time_taken` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=79 ;
 
 --
 -- Dumping data for table `user_score`
@@ -123,14 +125,16 @@ INSERT INTO `user_score` (`id`, `uid`, `qid`, `ans`, `points`, `time_taken`) VAL
 (58, 19, 5, 'd', 1, '2'),
 (59, 19, 7, 'a', 1, '1'),
 (60, 19, 6, 'a', 1, '2'),
-(61, 20, 7, 'a', 1, '8'),
-(62, 20, 3, 'b', 1, '2'),
-(63, 20, 4, 'c', 1, '3'),
-(64, 20, 6, 'a', 1, '2'),
-(65, 20, 1, 'b', 1, '2'),
-(66, 20, 5, 'd', 1, '2'),
-(67, 20, 2, 'c', 1, '2'),
-(68, 20, 8, 'a', 1, '3');
+(69, 21, 8, 'a', 1, '4'),
+(70, 21, 4, 'c', 1, '4'),
+(71, 21, 6, 'a', 1, '3'),
+(72, 21, 2, 'c', 1, '3'),
+(73, 21, 7, 'c', 0, '4'),
+(74, 21, 3, 'a', 0, '4'),
+(75, 21, 1, 'b', 1, '2'),
+(76, 21, 5, 'd', 1, '4'),
+(77, 21, 10, 'c', 1, '4'),
+(78, 21, 9, 'a', 1, '2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
