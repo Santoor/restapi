@@ -11,6 +11,7 @@ class Quiz extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('user');
+        $this->load->library ( 'common' );
         
     }
 
@@ -52,7 +53,7 @@ class Quiz extends CI_Controller {
             curl_close($ch);
 
             $resultarray = json_decode($result, true);
-            //print_r($resultarray);
+            //print_r($resultarray);die;
             if (array_key_exists('data', $resultarray)) {
                 $id = $resultarray['data'];
 
@@ -62,6 +63,7 @@ class Quiz extends CI_Controller {
 
                 $this->session->set_userdata('user_id', $id);
                 $this->session->set_userdata('user_name', $userDetail['name']);
+                $this->session->set_userdata('user_email', $userDetail['email']);
 
 
                 redirect('quiz/ques');
@@ -251,6 +253,8 @@ class Quiz extends CI_Controller {
     
     public function finish() {
         $userId=$this->session->userdata('user_id');
+        $username=$this->session->userdata('user_name');
+        $userEmail=$this->session->userdata('user_email');
         if($userId){
             
         }else{
@@ -275,6 +279,28 @@ class Quiz extends CI_Controller {
         if (array_key_exists('status', $mcqUserData)) {
             redirect('quiz/ques');
         }else{
+            
+            
+            $points=0; 
+            foreach($mcqUserData as $ques=>$ansdata){
+                $points+=$ansdata['points'];
+                
+            }
+            
+            //echo $points;
+            $totalQues=count($mcqUserData);
+            $foo=$totalQues/$points;
+            
+            $percentage=100/$foo;
+            
+            // mail to user
+            $attachfile="";
+            
+            $adminmsg = "Hi $username,<br>
+			You have Scored $percentage%  <br> You answered correct $points out of $totalQues.";
+            //$mailstatus = $this->common->sendmail ( $senderID, $senderName, $user_email, $subject, $messageBody1, $attachfile );
+            $this->common->sendmail ( 'rkotest369@gmail.com', 'Webdunia', $userEmail, 'Quiz Result', $adminmsg, $attachfile );
+            
             $data['quizresult']=$mcqUserData;
             $data['name']=$this->session->userdata('user_name');
             $this->load->view('quiz/finish',$data);
